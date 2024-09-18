@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/94cbf1b8fc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Login Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <!-- Student Login Form -->
+                <form action="studloginsubmit" class="sign-in-form" onsubmit="return verifyStudentLogin()" method="POST">
+                    <h2 class="title">Student Login</h2>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email ID" name="mail" id="student-email" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="passcode" id="student-pswd" required />
+                    </div>
+                    <p id="student-message" style="color: red;"></p>
+                    <input type="submit" value="Login" class="btn solid" />
+                    <p class="social-text">Or Sign in with social platforms</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <br>
+                    <a href="Stud_signup.html" class="signuplink">Don't have an account? Click here to Signup</a>
+                </form>
+
+                <!-- Admin Login Form -->
+                <form action="AdminLoginSubmit" class="sign-up-form" onsubmit="return verifyAdminLogin()" method="POST">
+                    <h2 class="title">Admin Login</h2>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" id="admin-email" required name="Adminmail" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" id="admin-pswd" required name="Adminpass"/>
+                    </div>
+                    <p id="admin-message" style="color: red;"></p>
+                    <input type="submit" class="btn" value="Login" />
+                    <p class="social-text">Or Sign up with social platforms</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <img src="admn.png" alt="adminimg" id="ad">
+                    <h3>Login for Admin</h3>
+                    <p>If you are an admin, login to your Admin account.</p>
+                    <button class="btn transparent" id="sign-up-btn">Admin</button>
+                </div>
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <img src="student.png" alt="studimg" id="sd">
+                    <h3>Login for Student</h3>
+                    <p>Login with your Student Email and <br>Explore the Community</p>
+                    <button class="btn transparent" id="sign-in-btn">Student</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sign_in_btn = document.querySelector("#sign-in-btn");
+        const sign_up_btn = document.querySelector("#sign-up-btn");
+        const container = document.querySelector(".container");
+
+        // Toggle between Admin and Student login forms
+        sign_up_btn.addEventListener("click", () => {
+            container.classList.add("sign-up-mode");
+        });
+
+        sign_in_btn.addEventListener("click", () => {
+            container.classList.remove("sign-up-mode");
+        });
+
+        function validateEmail(email, messageElement, isStudent = true) {
+            const emailPattern = isStudent
+                ? /^[a-zA-Z0-9._%+-]+@vishnu\.edu\.in$/
+                : /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (email === "") {
+                messageElement.textContent = "**Email field cannot be empty!";
+                alert("Invalid email/password");
+                return false;
+            }
+            if (!emailPattern.test(email)) {
+                const domainMessage = isStudent ? "@vishnu.edu.in" : "a valid domain";
+                messageElement.textContent = `**Please enter a valid email address with ${domainMessage}!`;
+                alert("Invalid email/password");
+                return false;
+            }
+            return true;
+        }
+
+        function validatePassword(pw, messageElement) {
+            if (pw === "") {
+                messageElement.textContent = "**Fill the password please!";
+                alert("Invalid email/password");
+                return false;
+            }
+            if (pw.length < 8) {
+                messageElement.textContent = "**Password length must be at least 8 characters";
+                alert("Invalid email/password");
+                return false;
+            }
+            if (pw.length > 15) {
+                messageElement.textContent = "**Password length must not exceed 15 characters";
+                alert("Invalid email/password");
+                return false;
+            }
+            if (!/[A-Z]/.test(pw)) {
+                messageElement.textContent = "**Password must contain at least one uppercase letter";
+                alert("Invalid email/password");
+                return false;
+            }
+            if (!/[!@#$%^&*(),.?\":{}|<>]/.test(pw)) {
+                messageElement.textContent = "**Password must contain at least one special character";
+                alert("Invalid email/password");
+                return false;
+            }
+            if (!/\d/.test(pw)) {
+                messageElement.textContent = "**Password must contain at least one number";
+                alert("Invalid email/password");
+                return false;
+            }
+            return true;
+        }
+
+        function verifyStudentLogin() {
+            const email = document.getElementById("student-email").value;
+            const pw = document.getElementById("student-pswd").value;
+            const emailMessage = document.getElementById("student-message");
+
+            // Clear previous messages
+            emailMessage.textContent = "";
+
+            // Perform validation and return the result
+            const isValidEmail = validateEmail(email, emailMessage, true);
+            const isValidPassword = validatePassword(pw, emailMessage);
+
+            if (!isValidEmail || !isValidPassword) {
+                alert("Invalid email/password");
+                return false;
+            }
+            return true;
+        }
+
+        function verifyAdminLogin() {
+            const email = document.getElementById("admin-email").value;
+            const pw = document.getElementById("admin-pswd").value;
+            const emailMessage = document.getElementById("admin-message");
+
+            // Clear previous messages
+            emailMessage.textContent = "";
+
+            // Perform validation and return the result
+            const isValidEmail = validateEmail(email, emailMessage, false);
+            const isValidPassword = validatePassword(pw, emailMessage);
+
+            if (!isValidEmail || !isValidPassword) {
+                alert("Invalid email/password");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

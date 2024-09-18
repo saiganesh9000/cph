@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Projects</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        h1{
+            color: white;
+            font-size: 40px;
+            margin-left: 60px;
+        }
+        .container{
+            border: 2px solid white;
+            margin-top: 40px;
+            margin-left: 60px;
+            margin-right: 80px;
+            width: 85vw;
+            height: 49vh;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            border-radius: 20px;
+        }
+        .option{
+            margin-top: 36px;
+            border: 2px solid rgb(117, 4, 4);
+            height: 200px;
+            width: 200px;
+            padding: 10px;
+            border-radius: 20px;
+            background-color: #ec3232;
+            transition: 0.25s;
+        }
+        .container a{
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .option:hover{
+            height: 210px;
+            width:210px;
+            background-color: #420202;
+        }
+        .box1{
+            background-image: url('finalimg.jpg');
+            z-index: 2;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .box2{
+            background-image: url('active.jpg');
+            z-index: 2;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+<body>
+    <h1><span style="color: #ec3232;">E</span>xplore Projects</h1>
+    <div class="container">
+        <a href="view_final_proj.html"><div class="option box1"><p>Final Year Projects</p></div></a>
+        <a href=""><div class="option box2"><p>Active Projects</p></div></a>
+        <a href=""><div class="option box3"><p>Research Papers</p></div></a>
+    </div>
+</body>
+</html>

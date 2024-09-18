@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Project Data</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #201c1c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 2px 4px 8px white;
+        }
+
+        #projectForm {
+            background-color: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgb(255, 255, 255);
+            max-width: 700px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 18px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 80px;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ec3232;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #7b0000;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: black;
+            color: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1><span style="color: #ec3232;">U</span>pload Project Data</h1>
+    <form id="projectForm" action="finalyearProjectSubmission" method="POST" onsubmit="clearForm()">
+        <label>Project Idea:</label>
+        <input type="text" id="projectIdea" required name="final_idea">
+
+        <label>Project Abstract:</label>
+        <textarea id="projectAbstract" required name="final_abs"></textarea>
+
+        <label>Project Year:</label>
+        <input type="number" id="projectYear" required name="final_year">
+
+        <label>Batch Year:</label>
+        <input type="number" id="batchYear" required name="final_batch">
+
+        <label>Team Size:</label>
+        <input type="number" id="teamSize" required name="final_size">
+
+        <label>Team Name:</label>
+        <input type="text" id="teamName" required name="final_team_name">
+
+        <label>Team Members (Name, Contact, Branch):</label>
+        <textarea id="teamMembers" placeholder="e.g. Varanasi Ganesh, 7386833466, CSE" required name="final_data"></textarea>
+
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" name="final_category" onchange="showDomains()" required>
+                <option value="">Select a category</option>
+                <option value="software">Software</option>
+                <option value="hardware">Hardware</option>
+                <option value="integrated">Integrated</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="domain">Domain:</label>
+            <select id="domain" name="final_domain" required>
+                <option value="">Select a domain</option>
+            </select>
+        </div>
+
+        <button type="submit">Upload</button>
+    </form>
+
+    <script>
+        function showDomains() {
+            var category = document.getElementById('category').value;
+            var domainSelect = document.getElementById('domain');
+            domainSelect.innerHTML = '<option value="">Select a domain</option>';
+
+            var domains = {
+                software: ['Machine Learning', 'Web Development', 'Mobile Development', 'Data Science', 'Cybersecurity', 'Cloud Computing', 'Blockchain', 'Game Development', 'Artificial Intelligence', 'Augmented Reality', 'Virtual Reality', 'DevOps', 'Big Data'],
+                hardware: ['Embedded Systems', 'IoT', 'Circuit Design', 'Robotics', 'VLSI Design', 'FPGA Development', 'Networking Hardware', 'Wearable Technology', '3D Printing', 'Microcontroller Programming', 'Power Electronics', 'Sensor Technology'],
+                integrated: ['Full Stack Development', 'Cyber-Physical Systems', 'AI Hardware Integration', 'System Integration', 'Smart Cities', 'Home Automation', 'Industrial Automation', 'Autonomous Vehicles', 'Medical Devices', 'Smart Grid', 'Telecommunications', 'Aerospace Systems']
+            };
+
+            if (domains[category]) {
+                domains[category].forEach(function(domain) {
+                    var option = document.createElement('option');
+                    option.value = domain.toLowerCase().replace(/\s+/g, '-');
+                    option.textContent = domain;
+                    domainSelect.appendChild(option);
+                });
+            }
+        }
+
+        function clearForm() {
+            // Delay the reset to allow form submission first
+            setTimeout(() => {
+                document.getElementById('projectForm').reset();
+            }, 0);
+        }
+    </script>
+</body>
+</html>

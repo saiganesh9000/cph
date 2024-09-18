@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        h1 {
+            color: red;
+            font-size: 50px;
+            margin-top: 10px;
+        }
+
+        h3 {
+            color: white;
+            font-size: 38px;
+        }
+
+        .section {
+            margin: 30px;
+            padding: 20px;
+            border: 2px solid white;
+            border-radius: 15px;
+            box-shadow: 8px 8px 10px gray;
+        }
+
+        .input-fields {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            color: white;
+            font-size: 18px;
+            padding: 20px;
+        }
+
+        .input-fields input {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            width: 300px;
+        }
+
+        .input-fields button {
+            padding: 10px;
+            background-color: rgb(250, 60, 60);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            width: 150px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .display {
+            padding: 10px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .skill-project-input {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-project-input input {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            width: 300px;
+        }
+
+        .prodiv {
+            border: 2px solid white;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+
+        .projectsList,
+        .skillsList {
+            margin-left: 40px;
+            margin-bottom: 20px;
+            font-size: 25px;
+            color: white;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Profile Section -->
+    <div class="section">
+        <h1>Profile</h1>
+
+        <!-- Form to capture profile details -->
+        <div class="input-fields" id="input-fields">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name"><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label for="rollNumber">Roll Number:</label>
+            <input type="text" id="rollNumber" placeholder="Enter your roll number">
+
+            <label for="branch">Branch:</label>
+            <input type="text" id="branch" placeholder="Enter your branch">
+
+            <label for="year">Year:</label>
+            <input type="text" id="year" placeholder="Enter your year">
+
+            <label for="semester">Semester:</label>
+            <input type="text" id="semester" placeholder="Enter your semester">
+
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" placeholder="Enter your contact number">
+
+            <button onclick="saveDetails()">Save Details</button>
+        </div>
+
+        <!-- Display section for profile details -->
+        <div class="display" id="profile-display" style="display: none;">
+            <p><strong>Name:</strong> <span id="display-name"></span></p>
+            <p><strong>Email:</strong> <span id="display-email"></span></p>
+            <p><strong>Roll Number:</strong> <span id="display-rollNumber"></span></p>
+            <p><strong>Branch:</strong> <span id="display-branch"></span></p>
+            <p><strong>Year:</strong> <span id="display-year"></span></p>
+            <p><strong>Semester:</strong> <span id="display-semester"></span></p>
+            <p><strong>Contact Number:</strong> <span id="display-contactNumber"></span></p>
+
+            <button class="edit-btn" onclick="editDetails()">Edit Details</button>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="section" id="Skills">
+        <h1>Skills</h1>
+        <div class="skillsList" id="skillsList"></div>
+        <div class="skill-project-input">
+            <input type="text" id="skillInput" placeholder="Enter a skill">
+            <button onclick="addSkill()">Add Skill</button>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="section" id="Projects">
+        <h1>Projects</h1>
+        <div class="projectsList" id="projectsList"></div>
+        <div class="skill-project-input">
+            <input type="text" id="projectTitle" placeholder="Project Title">
+            <input type="text" id="projectDes" placeholder="Project Description">
+            <input type="text" id="projectLinks" placeholder="Website Link">
+            <button onclick="addProject()">Add Project</button>
+        </div>
+    </div>
+
+    <script>
+        // Save and Display Profile Details
+        function saveDetails() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const rollNumber = document.getElementById('rollNumber').value;
+            const branch = document.getElementById('branch').value;
+            const year = document.getElementById('year').value;
+            const semester = document.getElementById('semester').value;
+            const contactNumber = document.getElementById('contactNumber').value;
+
+            if (!name || !email || !rollNumber || !branch || !year || !semester || !contactNumber) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            document.getElementById('display-name').textContent = name;
+            document.getElementById('display-email').textContent = email;
+            document.getElementById('display-rollNumber').textContent = rollNumber;
+            document.getElementById('display-branch').textContent = branch;
+            document.getElementById('display-year').textContent = year;
+            document.getElementById('display-semester').textContent = semester;
+            document.getElementById('display-contactNumber').textContent = contactNumber;
+
+            document.getElementById('input-fields').style.display = 'none';
+            document.getElementById('profile-display').style.display = 'block';
+        }
+
+        function editDetails() {
+            document.getElementById('input-fields').style.display = 'block';
+            document.getElementById('profile-display').style.display = 'none';
+        }
+
+        // Add Skills
+        function addSkill() {
+            const skillInput = document.getElementById('skillInput');
+            const skillText = skillInput.value.trim();
+
+            if (skillText !== '') {
+                const skillsList = document.getElementById('skillsList');
+                const skillItem = document.createElement('p');
+                skillItem.textContent = skillText;
+                skillsList.appendChild(skillItem);
+                skillInput.value = '';
+            } else {
+                alert('Please enter a skill.');
+            }
+        }
+
+        // Add Projects
+        function addProject() {
+            const projectTitle = document.getElementById('projectTitle').value.trim();
+            const projectDes = document.getElementById('projectDes').value;
+            const projectLinks = document.getElementById('projectLinks').value;
+
+            if (projectTitle !== '') {
+                const projectList = document.getElementById('projectsList');
+                const projectDiv = document.createElement('div');
+                projectDiv.innerHTML = `
+                    <p><strong>Project Title:</strong> ${projectTitle}</p> 
+                    <p><strong>Description:</strong> ${projectDes}</p> 
+                    <p><strong>Website Link:</strong> <a href="${projectLinks}" target="_blank">${projectLinks}</a></p>`;
+                projectDiv.className = 'prodiv';
+                projectList.appendChild(projectDiv);
+                document.getElementById('projectTitle').value = '';
+                document.getElementById('projectDes').value = '';
+                document.getElementById('projectLinks').value = '';
+            } else {
+                alert('Please enter a project title.');
+            }
+        }
+
+    </script>
+
+</body>
+</html>

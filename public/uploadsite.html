@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Project Data</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #projectForm {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+
+    <script>
+      import { initializeApp } from "firebase/app";
+      import { getDatabase, ref, set, get } from "firebase/database";
+      import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
+    
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "your-project-id.firebaseapp.com",
+        databaseURL: "https://your-project-id.firebaseio.com",
+        projectId: "your-project-id",
+        storageBucket: "your-project-id.appspot.com",
+        messagingSenderId: "your-messaging-sender-id",
+        appId: "your-app-id"
+      };
+    
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      const storage = getStorage(app);
+
+      function uploadProjectData() {
+        const projectIdea = document.getElementById('projectIdea').value;
+        const projectAbstract = document.getElementById('projectAbstract').value;
+        const projectYear = document.getElementById('projectYear').value;
+        const batchYear = document.getElementById('batchYear').value;
+        const teamSize = document.getElementById('teamSize').value;
+        const teamName = document.getElementById('teamName').value;
+        const teamMembers = document.getElementById('teamMembers').value;
+        const achievements = document.getElementById('achievements').files[0];
+
+        const projectRef = db.ref('projects/' + projectIdea);
+        projectRef.set({
+            projectIdea: projectIdea,
+            projectAbstract: projectAbstract,
+            projectYear: projectYear,
+            batchYear: batchYear,
+            teamSize: teamSize,
+            teamName: teamName,
+            teamMembers: teamMembers,
+        });
+
+        if (achievements) {
+            const storageRef = storage.ref('achievements/' + achievements.name);
+            storageRef.put(achievements).then(snapshot => {
+                snapshot.ref.getDownloadURL().then(url => {
+                    projectRef.update({
+                        achievementFileUrl: url
+                    });
+                });
+            });
+        }
+        alert("Project data uploaded successfully!");
+      }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Upload Project Data</h1>
+        <form id="projectForm" action="finalyearProjectSubmission">
+            <label>Project Idea:</label>
+            <input type="text" id="projectIdea" required><br>
+
+            <label>Project Abstract:</label>
+            <textarea id="projectAbstract" required></textarea><br>
+
+            <label>Project Year:</label>
+            <input type="number" id="projectYear" required><br>
+
+            <label>Batch Year:</label>
+            <input type="number" id="batchYear" required><br>
+
+            <label>Team Size:</label>
+            <input type="number" id="teamSize" required><br>
+
+            <label>Team Name:</label>
+            <input type="text" id="teamName" required><br>
+
+            <label>Team Members (Name, Contact, Branch):</label>
+            <textarea id="teamMembers" placeholder="e.g. John Doe, 1234567890, CSE" required></textarea><br>
+
+            <label>Achievements (Optional - PDF):</label>
+            <input type="file" id="achievements" accept=".pdf"><br>
+
+            <button type="button" onclick="uploadProjectData()">Upload</button>
+        </form>
+    </div>
+</body>
+</html>

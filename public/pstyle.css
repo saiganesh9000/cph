@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+
+h3{
+    color: white;
+    font-size: 38px;
+}
+
+h1{
+    color: red;
+    font-size: 80px;
+    margin-top: 10px;
+
+}
+.Propic{
+    height: 300px;
+    width: 320px;
+}
+.nameImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    height: 400px;
+    border: 2px solid white;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 10px gray;
+
+}
+.name{
+    border: 3px solid white;
+    height: 240px;
+    width: 600px;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right:40px;
+    box-shadow: 10px 10px 14px white;
+}
+
+.container{
+    padding: 10px , 10%;
+    margin: 10px 10px 20px 10px;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    transition: 0.25s;
+}
+
+nav ul li a:hover{
+    background-color: rgb(79, 80, 81);
+    font-size: 24px;
+    border-color: 8px;
+}
+
+.about , .myskills , .projects , .contact , .download{
+    border: 3px solid white;
+    margin-top: 28px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 10px gray;
+}
+.abth1{
+    font-size: 40px;
+    margin: 10px;
+    padding: 8px;
+    color: white;  
+}
+.skillsInput{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    margin-left: 20px;
+    margin-bottom: 30px;
+
+}
+.prodiv{
+    border: 2px solid white;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.projectForm{
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 310px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}

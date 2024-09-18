@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Macondo&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-straight/css/uicons-regular-straight.css'>
+    
+    <style>
+        /* Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+        body {
+            background: #212121;
+        }
+
+        /* Slide */
+        .slide-wrapper {
+            display: flex;
+            align-items: center;
+            margin: 50px 0;
+            width: 80%;
+            transition: transform 0.25s ease;
+        }
+
+        .slide {
+            width: 90%;
+            height: auto;
+            padding: 30px;
+            margin: 20px;
+            justify-content: left;
+            box-sizing: border-box;
+            border-radius: 10px;
+            color: rgb(4, 6, 7);
+            transition: 0.25s;
+            opacity: 0;
+            transform: translateX(-100%);
+            margin-left: 90px;
+            margin-right: 90px;
+            text-align: left;
+            transition: opacity 1s ease, transform 1s ease; /* Slower transition */
+        }
+
+        .slide.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #f8f8f7;    
+            font-family: "Cinzel", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .slide p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #f8f8f7;
+            font-family: "Merienda", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            line-height: 30px;
+        }
+
+        .slide a {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ec3232;
+            color: rgb(255, 255, 255);
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .slide:hover {
+            background-color:#0d0c0c;
+            box-shadow:1px 4px 10px #f8f8f7;
+            box-sizing: border-box;
+            transition: 0.5s;
+        }
+
+        /* Image */
+        .slide-image {
+            width: 80%;
+            height: 40vh;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+            margin-left: 70px;
+            margin-right: 70px;
+        }
+
+        .slide-wrapper:nth-child(odd) .slide {
+            order: 1;
+        }
+
+        .slide-wrapper:nth-child(odd) .slide-image {
+            order: 2;
+            width: 90%;
+            height: 60vh;
+        }
+
+        .slide-wrapper:nth-child(even) .slide {
+            order: 2;
+        }
+
+        .slide-wrapper:nth-child(even) .slide-image {
+            order: 1;
+            
+        }
+
+        .slide-wrapper:hover .slide-image {
+            transform: scale(1.1);
+        }
+
+        /* Keyframes for slide-in-from-left animation */
+        @keyframes slideInFromLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .imgdiv{
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 170px; 
+            opacity: 1;
+            transform: scale(1px);
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="slide-wrapper">
+            <div class="slide">
+                <h2>Explore Projects</h2>
+                <p>"Unlock access to a wealth of completed projects, study the methodologies of your seniors, and equip yourself with the knowledge to excel."</p>
+                <a href="Explore_projects.html">Explore <i class="fi fi-rr-rocket-lunch"></i> </a>
+            </div>
+            <div class="slide-image" style="background-image: url('exploreproject.png'); height: 80vh;width: 60%;"></div>
+        </div>
+        <div class="slide-wrapper">
+            <div class="slide">
+                <h2>Vacant project</h2>
+                <p>"Join forces with innovative teams, find vacant projects, and bring your unique skills to the table. Collaborate and create something extraordinary together."</p>
+                <a href="vacancy.html">Search for Vacancies</a>
+            </div>
+            <div class="slide-image" style="background-image: url('vacant.png');"></div>
+        </div>
+        <div class="slide-wrapper">
+            <div class="slide">
+                <h2>Have an idea?</h2>
+                <p> "Your vision, your project. Submit your idea for approval, and take charge of building and leading your own team."</p>
+                <a href="ideaform.html">Post Your Idea!  <i class="fi fi-rs-lightbulb-on"></i></a>
+            </div>
+            <div class="slide-image" style="background-image: url('ideahost.png'); height: 50vh; width: 50%;"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = document.querySelectorAll('.slide');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    } else {
+                        entry.target.classList.remove('show');
+                    }
+                });
+            });
+
+            slides.forEach(slide => {
+                observer.observe(slide);
+            });
+        });
+    </script>
+</body>
+</html>
