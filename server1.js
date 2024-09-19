@@ -37,7 +37,7 @@ app.post("/signupsubmit", async (req, res) => {
         await db.collection('campus').add({ signupName, mail, passcode: hashedPassword });
         res.redirect('/');
     } catch (error) {
-        res.status(500).send("Error signing up: " + error.message);
+        res.status(500).send("Error signing up ok: " + error.message);
     }
 });
 
