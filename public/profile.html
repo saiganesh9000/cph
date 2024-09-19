@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(29, 29, 29);
+}
+
+#header{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(29, 29, 29);
+
+}
+
+h3{
+    color: white;
+    font-size: 38px;
+}
+
+h1{
+    color: #ec3232;
+    font-size: 80px;
+    margin-top: 10px;
+
+}
+.Propic{
+    height: 300px;
+    width: 320px;
+}
+.nameImg{
+    display: flex;
+    /* justify-content: center;
+    align-items: center;
+    justify-content: space-around; */
+    height: 620px;
+    border: 2px solid white;
+    margin-top: 80px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 10px gray;
+    flex-direction: column;
+    
+
+}
+/* .name{
+    border: 3px solid white;
+    height: 240px;
+    width: 600px;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right:40px;
+    box-shadow: 10px 10px 14px white;
+} */
+
+.container{
+    padding: 10px , 10%;
+    margin: 10px 10px 20px 10px;
+
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    transition: 0.25s;
+}
+
+nav ul li a:hover{
+    background-color: rgb(79, 80, 81);
+    font-size: 24px;
+    border-color: 8px;
+}
+
+.about , .myskills , .projects , .contact , .download{
+    border: 3px solid white;
+    margin-top: 28px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 10px gray;
+}
+.abth1{
+    font-size: 40px;
+    margin: 10px;
+    padding: 8px;
+    color: white;  
+}
+.skillsInput{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    margin-left: 20px;
+    margin-bottom: 30px;
+
+}
+.prodiv{
+    border: 2px solid white;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.projectForm{
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 310px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.input-fields{
+    margin-left: 40px;
+    font-size: 20px;
+    border: 2px solid white;
+    margin-right: 40px;
+    padding: 20px;
+    border-radius: 8px;
+
+}
+
+label{
+    color: white;
+    font-weight: bold;
+
+}
+.ip{
+    width: 400px;
+    background-color: rgb(44, 44, 44);
+    border: none;
+    border-radius: 8px;
+    height: 40px;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.display{
+    color: aliceblue;
+    font-size: 30px;
+    margin-left: 30px;
+}
+.display p{
+    color: aliceblue;
+    font-size: 32px;
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+strong{
+    color: #ec3232;
+}
+    </style>
+
+    
+</head>
+<body>
+
+    <div id="header">
+        <div class="container">
+            <nav>
+                <h3 style="color:white;"><span style="color:#ec3232;">C</span>PH</h4>
+                    <ul>
+                        <li><a href="#Skills">Skills</a></li>
+                        <li><a href="#Projects">Projects</a></li>
+                        <li><a href="#Links">Links</a></li>
+                        <li><a href="#Contact">Contact</a></li>
+                    </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="nameImg">
+        <h1 class="abth1">
+            <span style="color: #ec3232;">P</span>rofile
+        </h1>
+
+        <!-- Form to capture profile details -->
+        <div class="input-fields" id="input-fields">
+            <label for="name">Name :</label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="name" placeholder="Enter your name" class="ip"> <br> <br>
+
+            <label for="email">Email :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="email" id="email" placeholder="Enter your email"  class="ip"><br> <br>
+
+            <label for="rollNumber">Roll Number :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="rollNumber" placeholder="Enter your roll number" class="ip"><br> <br>
+
+            <label for="branch">Branch :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="branch" placeholder="Enter your branch" class="ip"><br> <br>
+
+            <label for="year">Year :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="year" placeholder="Enter your year" class="ip"><br> <br>
+
+            <label for="semester">Semester :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="semester" placeholder="Enter your semester" class="ip"><br> <br>
+
+            <label for="contactNumber">Contact :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="contactNumber" placeholder="Enter your contact number" class="ip"><br> <br>
+
+            <!-- <button onclick="saveDetails()">Save Details</button> -->
+            <button onclick="saveDetails()" style="padding: 10px; background-color: #ec3232; border: none;
+             border-radius: 8px; height: 40px; width: 160px; color: white; 
+             font-weight: bold; font-size: 16px;" class="addskill">Save Details</button>
+        </div>
+
+        <!-- Display section for profile details -->
+        <div class="display" id="profile-display" style="display: none;">
+            <p><strong>Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <span id="display-name"></span></p>
+            <p><strong>Email :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <span id="display-email"></span></p>
+            <p><strong>Roll Number :&nbsp;&nbsp;&nbsp;&nbsp;</strong> <span id="display-rollNumber"></span></p>
+            <p><strong>Branch : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <span id="display-branch"></span></p>
+            <p><strong>Year : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <span id="display-year"></span></p>
+            <p><strong>Semester :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <span id="display-semester"></span></p>
+            <p><strong>Contact :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> <span id="display-contactNumber"></span></p>
+
+            <!-- <button class="edit-btn" onclick="editDetails()">Edit Details</button> -->
+            <button class="edit-btn" onclick="editDetails()" style="padding: 10px; background-color: #ec3232; border: none;
+             border-radius: 8px; height: 40px; width: 160px; color: white; 
+             font-weight: bold; font-size: 16px;" class="addskill">Edit Details</button>
+        </div>
+    </div>
+    <!-- <div class="nameImg" id="Home">
+        
+    <div class="proimg">
+        <img src="g.jpg" alt="Profile" class="Propic">
+
+    </div>
+    </div> -->
+
+    <!-- <div class="about" id="About">
+        <h1 class="abth1">
+            <span style="color: red;">A</span>bout Me
+        </h1>
+        <p style="color: white; margin: 10px; font-size: 20px; padding: 8px; padding-bottom: 15px;">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sunt maiores consectetur quis voluptatum, minima
+             deleniti? Architecto laborum temporibus, facilis ad voluptatem id atque aut? Voluptate dolore molestias nostrum
+              ipsam facilis ad voluptatem id atque aut? Voluptate dolore molestias nostrum!
+        </p>
+    </div> -->
+
+    <div class="myskills" id="Skills">
+        <h1 class="abth1">
+            <span style="color: #ec3232;">S</span>kills
+        </h1>
+        
+        <div class="skillsList" id="skillsList" style="color: white; font-size: 40px; margin-top: 20px; margin-left: 40px; margin-bottom: 20px;">
+            <!-- Skills will be displayed here -->
+        </div>
+        <div class="skillsInput">
+            <input type="text" id="skillInput" placeholder="Enter a skill" style="padding: 10px; margin-right: 10px; height: 40px;
+            font-size: 16px; border: none; font-weight: bold; border-radius: 8px;">
+            <button onclick="addSkill()" style="padding: 10px; background-color: #ec3232; border: none;
+             border-radius: 8px; height: 40px; width: 100px; color: white; 
+             font-weight: bold; font-size: 16px;" class="addskill">Add Skill</button>
+        </div>
+    </div>
+
+    <div class="projects" id="Projects">
+        <h1 class="abth1">
+            <span style="color: #ec3232;">P</span>rojects
+        </h1>
+        
+        <div class="pros">
+            <div class="projectsList" id="projectsList" style="color: white; font-size: 40px; margin-top: 20px; margin-left: 40px; margin-bottom: 20px;">
+                
+            </div>
+            <div class="projectForm">
+                <input type="text" id="projectTitle" placeholder="Project Title" style= "padding: 10px; margin-left: 18px; height: 40px;
+            font-size: 16px; border: none; font-weight: bold; border-radius: 8px;"><br><br>
+             <input type="text" id="projectDes" placeholder="Project Description" style= "padding: 10px; margin-left: 18px; height: 40px;
+            font-size: 16px; border: none; font-weight: bold; border-radius: 8px;"><br><br>
+            <input type="text" id="projectLinks" placeholder="Website Link" style= "padding: 10px; margin-left: 18px; height: 40px;
+            font-size: 16px; border: none; font-weight: bold; border-radius: 8px;"> <br><br>
+                <button onclick="addProject()" style="padding: 10px; background-color: #ec3232; border: none;
+                border-radius: 8px; height: 40px; width: 150px; color: white; margin-left: 50px; 
+                font-weight: bold; font-size: 16px;">Add Project</button>
+            </div>
+           
+        </div>
+    </div>
+
+    <script>
+        function addSkill() {
+    const skillInput = document.getElementById('skillInput');
+    const skillText = skillInput.value.trim();
+
+    if (skillText !== '') {
+        const skillsList = document.getElementById('skillsList');
+        const skillItem = document.createElement('p');
+        skillItem.textContent = skillText;
+        skillItem.className = 'skillItem';
+        skillsList.appendChild(skillItem);
+        skillInput.value = ''; // Clear input after adding
+    } else {
+        alert('Please enter a skill.');
+    }
+}
+
+function addProject() {
+    const projectTitle = document.getElementById('projectTitle').value.trim();
+    const projectDes = document.getElementById('projectDes').value;
+    const projectLinks = document.getElementById('projectLinks').value;
+
+    if (projectTitle !== '') {
+        const projectList = document.getElementById('projectsList');
+        const projectDiv = document.createElement('div');
+        projectDiv.innerHTML = `<p style="padding: 20px; font-size: 38px; color:white; font-weight:bold;"><span style="color : red;">Project Title : </span>${projectTitle}</p> 
+        <p style="padding: 20px; font-size: 25px; color:white;"><span style="color : red; font-weight:bold;">Description : </span>${projectDes}</p> 
+        <p style="padding: 20px; font-size: 25px; color:white;"><span style="color : red; font-weight:bold;">Website Link : </span>${projectLinks}</p> `;
+        projectDiv.className = 'prodiv';
+        projectList.appendChild(projectDiv);
+        document.getElementById('projectTitle').value = '';
+        document.getElementById('projectDes').value = '';
+        document.getElementById('projectLinks').value = ''; // Clear input after adding
+    } else {
+        alert('Please enter a project title.');
+    }
+}
+
+        // Save and Display Profile Details
+        function saveDetails() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const rollNumber = document.getElementById('rollNumber').value;
+            const branch = document.getElementById('branch').value;
+            const year = document.getElementById('year').value;
+            const semester = document.getElementById('semester').value;
+            const contactNumber = document.getElementById('contactNumber').value;
+
+            if (!name || !email || !rollNumber || !branch || !year || !semester || !contactNumber) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            document.getElementById('display-name').textContent = name;
+            document.getElementById('display-email').textContent = email;
+            document.getElementById('display-rollNumber').textContent = rollNumber;
+            document.getElementById('display-branch').textContent = branch;
+            document.getElementById('display-year').textContent = year;
+            document.getElementById('display-semester').textContent = semester;
+            document.getElementById('display-contactNumber').textContent = contactNumber;
+
+            document.getElementById('input-fields').style.display = 'none';
+            document.getElementById('profile-display').style.display = 'block';
+        }
+
+        function editDetails() {
+            document.getElementById('input-fields').style.display = 'block';
+            document.getElementById('profile-display').style.display = 'none';
+        }
+
+</script>
+
+</body>
+</html>

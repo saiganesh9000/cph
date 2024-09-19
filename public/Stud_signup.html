@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/94cbf1b8fc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Student Sign up Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form action="signupsubmit" class="sign-in-form" method="POST" onsubmit ="return verifyStudentLogin()">
+            <h2 class="title">Student Signup</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" name="signupName" required />
+            </div>
+            <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Email ID" name="mail" id="student-email" required />
+              </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" name="passcode" id="student-pswd" required />
+            </div>
+            <p id="student-message" style="color: red;"></p>
+            <input type="submit" value="Signup" class="btn solid" />
+            <p class="social-text">Or Sign Up with social platforms</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <img src="student.png" alt="studimg" id="sd">
+            <h3>Login for Student</h3>
+            <p>
+              already have an account, login to your student account.. 
+            </p>
+            <a href="login_form.html"><button class="btn transparent" id="sign-up-btn">
+              Student
+            </button></a>
+          </div>
+
+        </div>
+    
+    </div>
+    <script>
+      
+      function verifyStudentLogin() {
+        const email = document.getElementById("student-email").value;
+        const pw = document.getElementById("student-pswd").value;
+        const emailMessage = document.getElementById("student-message");
+        return validateEmail(email, emailMessage) && validatePassword(pw, emailMessage);
+      }
+
+      function validateEmail(email, messageElement) {
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@vishnu\.edu\.in$/;
+        if (email === "") {
+          messageElement.textContent = "**Email field cannot be empty!";
+          return false;
+        }
+        if (!emailPattern.test(email)) {
+          messageElement.textContent = "**Please enter a valid email address with @vishnu.edu.in domain!";
+          return false;
+        }
+        return true;
+      }
+
+      function validatePassword(pw, messageElement) {
+        if (pw == "") {  
+          messageElement.textContent = "**Fill the password please!";
+          return false;  
+        }
+   
+        if (pw.length < 8) {  
+          messageElement.textContent = "**Password length must be at least 8 characters";  
+          return false;  
+        }  
+  
+        if (pw.length > 15) {  
+          messageElement.textContent = "**Password length must not exceed 15 characters";  
+          return false;  
+        } 
+
+        if (!/[A-Z]/.test(pw)) {
+          messageElement.textContent = "**Password must contain at least one uppercase letter";
+          return false;
+        }
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(pw)) {
+          messageElement.textContent = "**Password must contain at least one special character";
+          return false;
+        }
+
+        if (!/\d/.test(pw)) {
+          messageElement.textContent = "**Password must contain at least one number";
+          return false;
+        }
+        return true;
+      }
+    </script>
+
+  </body>
+</html>

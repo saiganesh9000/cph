@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+header {
+    z-index: 4;
+    color: black;
+    width: 100%;
+    height: 80px;
+    background-image: linear-gradient(45deg , #000000 , #262527);
+    color: white;
+    box-shadow: 2px 2px 8px rgb(251, 251, 251);
+    font-size: 20px;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+/* Main container */
+.main-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    background-image: linear-gradient(#000000 , #000000);
+    padding-top: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-shadow: 2px 2px 8px white;
+}
+
+.sidebar a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 22px;
+    transition: background-color 0.3s;
+    text-align: center;
+    flex-grow: 1;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    justify-content: center;
+    background-color: #000000;
+    color: white;
+    transition: 0.25s;
+    border-radius: 20px;
+}
+
+.icon-link i {
+    margin:15px;
+    transform:scale(1.5);
+}
+
+.icon-link:hover {
+    background-color: #444444;
+    border-radius: 20px;
+    border: 2px solid #ffffff;
+    
+}
+
+/* Content area */
+.content {
+    flex-grow: 1;
+    background-color: #f4f4f4;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-image: linear-gradient(45deg,rgb(0, 0, 0), #262527);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color:rgb(255, 255, 255); margin-top: 15px; margin-left: 30px;"><span style="color:#ec3232;">W</span>elcome</h1>
+    </header>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="icon-link">
+                <i class="fi fi-sr-user"></i>
+                <a href="profile.html" target="content-frame">Profile</a>
+            </div>
+            <div class="icon-link">
+                <i class="fi fi-sr-dashboard"></i>
+                <a href="studentdash.html" target="content-frame">Dashboard</a>
+            </div>
+            <div class="icon-link">
+                <i class="fi fi-sr-calendar"></i>
+                <a href="events.html" target="content-frame">Events</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <iframe name="content-frame" src="studentdash.html" frameborder="0"></iframe>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dash Board</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f8ff, #e6e6fa);
+            color: #333;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        /* Header styling */
+        .header {
+            z-index: 4;
+            color: black;
+            width: 100%;
+            height: 80px;
+            background-image: linear-gradient(45deg , #000000 , #262527);
+            color: white;
+            box-shadow: 2px 2px 8px rgb(251, 251, 251);
+            font-size: 20px;
+        }
+
+        .header h1{
+            font-family: 25px;
+            margin-top: 15px;
+            margin-left: 18px;
+        }
+
+        /* Container for sidebar and content */
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px;
+            background-color: #000000;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            color: #ec3232;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar button {
+            background: #ec3232;
+            border: none;
+            padding: 10px;
+            margin-bottom: 28px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            transition: 0.25s;
+            text-align: left;
+            height: 54px;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .sidebar button:hover {
+            background: #ec3232b1;
+            height: 56px;
+        }
+
+        /* Iframe styling */
+        .main-content {
+            flex: 1;
+            padding: 0;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-image: linear-gradient(45deg,rgb(0, 0, 0), #262527);
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Welcome <span style="color: #ec3232;">A</span>dmin</h1>
+    </div>
+
+    <!-- Container for Sidebar and Main Content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <button onclick="loadIframeContent('submitted_ideas.html')">Submitted Ideas</button>
+            <button onclick="loadIframeContent('view_final_proj.html')">Check Projects</button>
+            <button onclick="loadIframeContent('final_proj.html')">Add Final Year Projects</button>
+        </div>
+
+        <!-- Main Content with Iframe -->
+        <div class="main-content">
+            <iframe id="contentFrame" src="submitted_ideas.html" frameborder="0"></iframe> <!-- Default content -->
+        </div>
+    </div>
+
+    <script>
+        // Function to load content into the iframe based on button click
+        function loadIframeContent(url) {
+            const iframe = document.getElementById('contentFrame');
+            iframe.src = url;
+        }
+    </script>
+</body>
+</html>
